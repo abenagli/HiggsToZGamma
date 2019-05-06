@@ -72,7 +72,8 @@ process.source = cms.Source(
     skipEvents = cms.untracked.uint32(0),
     fileNames = cms.untracked.vstring(
         # MC signal 2016
-        '/store/mc/RunIISummer16MiniAODv3/GluGluHToZG_M-125_13TeV_powheg_pythia8_CUETP8M1Down/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/120000/8E7DBB6B-5F3C-E911-89C4-0242AC130002.root'
+        'file:/tmp/abenagli/8E7DBB6B-5F3C-E911-89C4-0242AC130002.root'
+        #'/store/mc/RunIISummer16MiniAODv3/GluGluHToZG_M-125_13TeV_powheg_pythia8_CUETP8M1Down/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/120000/8E7DBB6B-5F3C-E911-89C4-0242AC130002.root'
         )
     )
 
@@ -98,19 +99,21 @@ if not options.isData:
 
 process.ntupleSequence = cms.Sequence()
 
-if not options.isData:
+if options.isData is False:
     process.ntupleSequence += process.DumpPU
 
-if options.doPreselection:
-    if options.doMuon:
+if options.doPreselection is True:
+    if options.doMuon is True:
+        print "### doing muon"
         process.Preselection.doMuon = cms.bool(True)
-    if options.doElectron:
+    if options.doElectron is True:
+        print "### doing electron"
         process.Preselection.doElectron = cms.bool(True)
     process.ntupleSequence += process.Preselection
 
 process.ntupleSequence += process.DumpReco
 
-if not options.isData:
+if options.isData is False:
     process.ntupleSequence += process.DumpGenParticles
     process.DumpGenParticles.verbosity = cms.bool(True)
 
