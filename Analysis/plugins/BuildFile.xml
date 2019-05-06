@@ -1,0 +1,12 @@
+<use name="root"/>
+<use name="CLHEP"/>
+<use name="CommonTools/UtilAlgos"/>
+<use name="SimDataFormats/PileupSummaryInfo"/>
+<use name="DataFormats/VertexReco"/>
+<use name="DataFormats/JetReco"/>
+<use name="DataFormats/PatCandidates"/>
+<use name="ExternalTools/DynamicTTree"/>
+<use name="HiggsToZGamma/Analysis"/>
+<library file="*.cc" name="HiggsToZGammaPlugin">
+  <flags EDM_PLUGIN="1"/>
+</library>
