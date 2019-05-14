@@ -29,8 +29,6 @@ bool Preselection::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
   
   if( doMuon_ )
   {
-    if( muons.size() < 2 ) return false;
-    
     for(unsigned int it1 = 0; it1 < muons.size(); ++it1)
     {
       auto muon1 = muons.at(it1);
@@ -65,8 +63,6 @@ bool Preselection::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
   
   if( doElectron_ )
   {
-    if( electrons.size() < 2 ) return false;
-    
     for(unsigned int it1 = 0; it1 < electrons.size(); ++it1)
     {
       auto electron1 = electrons.at(it1);

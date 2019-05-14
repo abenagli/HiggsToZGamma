@@ -65,7 +65,7 @@ process.options = cms.untracked.PSet(
 # Files to process
 #-----------------
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(-1)
     )
 process.source = cms.Source(
     sourceTag,
@@ -115,7 +115,7 @@ process.ntupleSequence += process.DumpReco
 
 if options.isData is False:
     process.ntupleSequence += process.DumpGenParticles
-    process.DumpGenParticles.verbosity = cms.bool(True)
+    process.DumpGenParticles.verbosity = cms.bool(False)
 
 #----------------------------
 # Paths/Sequences Definitions
