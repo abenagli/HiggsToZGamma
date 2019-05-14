@@ -140,6 +140,8 @@ void DumpReco::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     outTree_.electrons_trackIso -> push_back( electron.trackIso() );
     outTree_.electrons_ecalIso  -> push_back( electron.ecalIso() );
     outTree_.electrons_hcalIso  -> push_back( electron.hcalIso() );
+
+    
     // outTree_.electrons_pfIsoChargedHadron   -> push_back( electron.pfIsolationR04().sumChargedHadronPt );
     // outTree_.electrons_pfIsoChargedParticle -> push_back( electron.pfIsolationR04().sumChargedParticlePt );
     // outTree_.electrons_pfIsoNeutralHadron   -> push_back( electron.pfIsolationR04().sumNeutralHadronEt );
@@ -172,6 +174,8 @@ void DumpReco::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     outTree_.photons_trackIso -> push_back( photon.trackIso() );
     outTree_.photons_ecalIso  -> push_back( photon.ecalIso() );
     outTree_.photons_hcalIso  -> push_back( photon.hcalIso() );
+    outTree_.photons_MVAID -> push_back( photon.userFloat("PhotonMVAEstimatorRunIIFall17v2Values") );
+    
     // outTree_.photons_pfIsoChargedHadron   -> push_back( photon.pfIsolationR04().sumChargedHadronPt );
     // outTree_.photons_pfIsoChargedParticle -> push_back( photon.pfIsolationR04().sumChargedParticlePt );
     // outTree_.photons_pfIsoNeutralHadron   -> push_back( photon.pfIsolationR04().sumNeutralHadronEt );

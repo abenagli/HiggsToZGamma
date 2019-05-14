@@ -31,6 +31,12 @@ options.register(
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "electron preselection flag")
+options.register(
+    'year',
+    '2016',
+    VarParsing.multiplicity.singleton,
+    VarParsing.varType.string,
+    "data taking year")
 
 options.parseArguments()
 
@@ -61,9 +67,21 @@ process.options = cms.untracked.PSet(
     )
 
 
+
 #-----------------
 # Files to process
 #-----------------
+process.load("Configuration.StandardSequences.GeometryDB_cff")
+process.load("Configuration.StandardSequences.MagneticField_cff")
+process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
+from Configuration.AlCa.GlobalTag import GlobalTag
+if options.year is '2016':
+    process.GlobalTag.globaltag = '94X_dataRun2_v10'
+if options.year is '2017':
+    process.GlobalTag.globaltag = '94X_dataRun2_v11'
+if options.year is '2018':
+    process.GlobalTag.globaltag = '102X_dataRun2_Sep2018ABC_v2'
+
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(-1)
     )
@@ -117,9 +135,33 @@ if options.isData is False:
     process.ntupleSequence += process.DumpGenParticles
     process.DumpGenParticles.verbosity = cms.bool(False)
 
+
+
+#----------------------------
+# Ele/Photon ID
+#----------------------------
+from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
+
+egammaIDString = ''
+if options.year == '2016' :
+    egammaIDString = '2016-Legacy'
+if options.year == '2017' :
+    egammaIDString = '2017-Nov17ReReco'
+if options.year == '2018' :
+    egammaIDString = '2018-Prompt'
+
+setupEgammaPostRecoSeq(
+    process,
+    runEnergyCorrections=False, #corrections by default are fine so no need to re-run
+    era=egammaIDString
+)
+
+
+
 #----------------------------
 # Paths/Sequences Definitions
 #----------------------------
 process.p = cms.Path(
+    process.egammaPostRecoSeq+
     process.ntupleSequence
-    )
+)

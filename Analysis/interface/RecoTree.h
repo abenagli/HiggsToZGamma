@@ -68,11 +68,6 @@
   DATA(std::vector<float>, electrons_trackIso)                        \
   DATA(std::vector<float>, electrons_ecalIso)                         \
   DATA(std::vector<float>, electrons_hcalIso)                         \
-  DATA(std::vector<float>, electrons_pfIsoChargedHadron)              \
-  DATA(std::vector<float>, electrons_pfIsoChargedParticle)            \
-  DATA(std::vector<float>, electrons_pfIsoNeutralHadron)              \
-  DATA(std::vector<float>, electrons_pfIsoPhoton)                     \
-  DATA(std::vector<float>, electrons_pfIsoPU)                         \
   DATA(std::vector<float>, photons_pt)                              \
   DATA(std::vector<float>, photons_eta)                             \
   DATA(std::vector<float>, photons_phi)                             \
@@ -88,11 +83,7 @@
   DATA(std::vector<float>, photons_trackIso)                        \
   DATA(std::vector<float>, photons_ecalIso)                         \
   DATA(std::vector<float>, photons_hcalIso)                         \
-  DATA(std::vector<float>, photons_pfIsoChargedHadron)              \
-  DATA(std::vector<float>, photons_pfIsoChargedParticle)            \
-  DATA(std::vector<float>, photons_pfIsoNeutralHadron)              \
-  DATA(std::vector<float>, photons_pfIsoPhoton)                     \
-  DATA(std::vector<float>, photons_pfIsoPU)                         \
+  DATA(std::vector<float>,   photons_MVAID)                         \
   DATA(std::vector<float>, jets_pt)                               \
   DATA(std::vector<float>, jets_eta)                              \
   DATA(std::vector<float>, jets_phi)                              \
