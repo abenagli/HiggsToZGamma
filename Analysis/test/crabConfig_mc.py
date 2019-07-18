@@ -1,21 +1,21 @@
 from CRABClient.UserUtilities import config, getUsernameFromSiteDB
 config = config()
 
-config.General.requestName = 'HtoMuMu_ntuples'
-config.General.workArea = 'crab_projects'
+config.General.requestName = 'HtoZg_ntuples'
+config.General.workArea = 'crab_projects_ele'
 config.General.transferOutputs = True
 config.General.transferLogs = False
 
 config.JobType.pluginName = 'Analysis'
 config.JobType.psetName = 'makeNtuple_cfg.py'
-config.JobType.pyCfgParams = ['isData=False', 'doPreselection=True']
+config.JobType.pyCfgParams = ['isData=False', 'doPreselection=True' , 'doMuon=False' ,  'doElectron=True' ,'year=2017']
 
-config.Data.inputDataset = '/GluGlu_HToMuMu_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM'
+config.Data.inputDataset = '/RunIISummer16MiniAODv3/GluGluHToZG_M-125_13TeV_powheg_pythia8_CUETP8M1Up/MINIAODSIM'
 config.Data.inputDBS = 'global'
 config.Data.splitting = 'FileBased'
 config.Data.unitsPerJob = 10
-config.Data.outLFNDirBase = '/store/user/abenagli/HMUMU/ntuples/mc_2016_v3/'
+config.Data.outLFNDirBase = '/store/group/dpg_ecal/alca_ecalcalib/phiSymmetry/Flavia/HtoZg/ele/'
 config.Data.publication = False
-config.Data.outputDatasetTag = 'HtoMuMu_ntuples_v1'
+config.Data.outputDatasetTag = 'HtoZg_ntuples_v2'
 
 config.Site.storageSite = 'T2_CH_CERN'

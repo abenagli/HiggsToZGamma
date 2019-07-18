@@ -44,6 +44,13 @@
   DATA(std::vector<std::vector<std::vector<int> > >,   resoDau2_charge) \
   DATA(std::vector<std::vector<std::vector<int> > >,   resoDau2_pdgId) \
   DATA(std::vector<std::vector<std::vector<std::string> > >,   resoDau2_name) \
+  DATA(std::vector<float>, genPho_pt) \
+  DATA(std::vector<float>, genPho_eta) \
+  DATA(std::vector<float>, genPho_phi) \
+  DATA(std::vector<float>, genPho_energy) \
+  DATA(std::vector<int>,   genPho_charge) \
+  DATA(std::vector<int>,   genPho_HardProcFinState) \
+  DATA(std::vector<int>,   genPho_isPromptFinState) \
   DATA(std::vector<float>, genJets_pt) \
   DATA(std::vector<float>, genJets_eta) \
   DATA(std::vector<float>, genJets_phi) \

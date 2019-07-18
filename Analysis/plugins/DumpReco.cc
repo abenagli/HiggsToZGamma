@@ -102,11 +102,11 @@ void DumpReco::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     outTree_.muons_trackIso -> push_back( muon.trackIso() );
     outTree_.muons_ecalIso  -> push_back( muon.ecalIso() );
     outTree_.muons_hcalIso  -> push_back( muon.hcalIso() );
-    outTree_.muons_pfIsoChargedHadron   -> push_back( muon.pfIsolationR04().sumChargedHadronPt );
-    outTree_.muons_pfIsoChargedParticle -> push_back( muon.pfIsolationR04().sumChargedParticlePt );
-    outTree_.muons_pfIsoNeutralHadron   -> push_back( muon.pfIsolationR04().sumNeutralHadronEt );
-    outTree_.muons_pfIsoPhoton          -> push_back( muon.pfIsolationR04().sumPhotonEt );
-    outTree_.muons_pfIsoPU              -> push_back( muon.pfIsolationR04().sumPUPt );
+    outTree_.muons_pfIsoChargedHadron   -> push_back( muon.pfIsolationR03().sumChargedHadronPt );
+    outTree_.muons_pfIsoChargedParticle -> push_back( muon.pfIsolationR03().sumChargedParticlePt );
+    outTree_.muons_pfIsoNeutralHadron   -> push_back( muon.pfIsolationR03().sumNeutralHadronEt );
+    outTree_.muons_pfIsoPhoton          -> push_back( muon.pfIsolationR03().sumPhotonEt );
+    outTree_.muons_pfIsoPU              -> push_back( muon.pfIsolationR03().sumPUPt );
     
     reco::TrackRef innerTrack = muon.innerTrack();
     // std::cout << "pt: " << muon.pt() << "   innerTrack: " << innerTrack.isNull() << std::endl;
@@ -129,24 +129,25 @@ void DumpReco::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     outTree_.electrons_vx       -> push_back( electron.vx() );
     outTree_.electrons_vy       -> push_back( electron.vy() );
     outTree_.electrons_vz       -> push_back( electron.vz() );
-    // outTree_.electrons_dxy      -> push_back( electron.electronBestTrack()->dxy((*vtxsHandle_)[0].position()) );
-    // outTree_.electrons_dxyErr   -> push_back( electron.electronBestTrack()->dxyError() );
-    // outTree_.electrons_dz       -> push_back( electron.electronBestTrack()->dz((*vtxsHandle_)[0].position()) );
-    // outTree_.electrons_dzErr    -> push_back( electron.electronBestTrack()->dzError() );
-    // outTree_.electrons_isLoose  -> push_back( electron.isLooseElectron() );
-    // outTree_.electrons_isMedium -> push_back( electron.isMediumElectron() );
-    // outTree_.electrons_isTight  -> push_back( electron.isTightElectron((*vtxsHandle_)[0]) );
-    // outTree_.electrons_mva -> push_back( electron.userFloat("asdadsa") );
+    outTree_.electrons_dxy      -> push_back( electron.gsfTrack()->dxy((*vtxsHandle_)[0].position()) );
+    outTree_.electrons_dxyErr   -> push_back( electron.gsfTrack()->dxyError() );
+    outTree_.electrons_dz       -> push_back( electron.gsfTrack()->dz((*vtxsHandle_)[0].position()) );
+    outTree_.electrons_dzErr    -> push_back( electron.gsfTrack()->dzError() );
+    outTree_.electrons_R9 -> push_back( electron.r9() );
+    outTree_.electrons_sieie -> push_back( electron.sigmaIetaIeta() );
+    outTree_.electrons_full5x5_R9 -> push_back( electron.full5x5_r9() );
+    outTree_.electrons_full5x5_sieie -> push_back( electron.full5x5_sigmaIetaIeta() );
+
     outTree_.electrons_trackIso -> push_back( electron.trackIso() );
     outTree_.electrons_ecalIso  -> push_back( electron.ecalIso() );
     outTree_.electrons_hcalIso  -> push_back( electron.hcalIso() );
-
+    outTree_.electrons_MVAID 	-> push_back( electron.userFloat("ElectronMVAEstimatorRun2Fall17IsoV1Values") );
     
-    // outTree_.electrons_pfIsoChargedHadron   -> push_back( electron.pfIsolationR04().sumChargedHadronPt );
-    // outTree_.electrons_pfIsoChargedParticle -> push_back( electron.pfIsolationR04().sumChargedParticlePt );
-    // outTree_.electrons_pfIsoNeutralHadron   -> push_back( electron.pfIsolationR04().sumNeutralHadronEt );
-    // outTree_.electrons_pfIsoPhoton          -> push_back( electron.pfIsolationR04().sumPhotonEt );
-    // outTree_.electrons_pfIsoPU              -> push_back( electron.pfIsolationR04().sumPUPt );
+    outTree_.electrons_EnergyPreCorr	-> push_back( electron.userFloat("ecalTrkEnergyPreCorr") );	
+    outTree_.electrons_EnergyErrPreCorr -> push_back( electron.userFloat("ecalTrkEnergyErrPreCorr") );
+    outTree_.electrons_EnergyPostCorr 	-> push_back( electron.userFloat("ecalTrkEnergyPostCorr") );	
+    outTree_.electrons_EnergyErrPostCorr -> push_back( electron.userFloat("ecalTrkEnergyErrPostCorr") );
+
     
     // add electron variables
   }
@@ -164,23 +165,21 @@ void DumpReco::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     outTree_.photons_vx       -> push_back( photon.vx() );
     outTree_.photons_vy       -> push_back( photon.vy() );
     outTree_.photons_vz       -> push_back( photon.vz() );
-    // outTree_.photons_dxy      -> push_back( photon.photonBestTrack()->dxy((*vtxsHandle_)[0].position()) );
-    // outTree_.photons_dxyErr   -> push_back( photon.photonBestTrack()->dxyError() );
-    // outTree_.photons_dz       -> push_back( photon.photonBestTrack()->dz((*vtxsHandle_)[0].position()) );
-    // outTree_.photons_dzErr    -> push_back( photon.photonBestTrack()->dzError() );
-    // outTree_.photons_isLoose  -> push_back( photon.isLoosePhoton() );
-    // outTree_.photons_isMedium -> push_back( photon.isMediumPhoton() );
-    // outTree_.photons_isTight  -> push_back( photon.isTightPhoton((*vtxsHandle_)[0]) );
     outTree_.photons_trackIso -> push_back( photon.trackIso() );
     outTree_.photons_ecalIso  -> push_back( photon.ecalIso() );
     outTree_.photons_hcalIso  -> push_back( photon.hcalIso() );
     outTree_.photons_MVAID -> push_back( photon.userFloat("PhotonMVAEstimatorRunIIFall17v2Values") );
-    
-    // outTree_.photons_pfIsoChargedHadron   -> push_back( photon.pfIsolationR04().sumChargedHadronPt );
-    // outTree_.photons_pfIsoChargedParticle -> push_back( photon.pfIsolationR04().sumChargedParticlePt );
-    // outTree_.photons_pfIsoNeutralHadron   -> push_back( photon.pfIsolationR04().sumNeutralHadronEt );
-    // outTree_.photons_pfIsoPhoton          -> push_back( photon.pfIsolationR04().sumPhotonEt );
-    // outTree_.photons_pfIsoPU              -> push_back( photon.pfIsolationR04().sumPUPt );
+    outTree_.photons_EnergyPreCorr 	-> push_back( photon.userFloat("ecalEnergyPreCorr") );	
+    outTree_.photons_EnergyErrPreCorr 	-> push_back( photon.userFloat("ecalEnergyErrPreCorr") );
+    outTree_.photons_EnergyPostCorr 	-> push_back( photon.userFloat("ecalEnergyPostCorr") );	
+    outTree_.photons_EnergyErrPostCorr	-> push_back( photon.userFloat("ecalEnergyErrPostCorr") );
+    outTree_.photons_R9 -> push_back( photon.r9() );
+    outTree_.photons_sieie -> push_back( photon.sigmaIetaIeta() );
+    outTree_.photons_full5x5_R9 -> push_back( photon.full5x5_r9() );
+    outTree_.photons_full5x5_sieie -> push_back( photon.full5x5_sigmaIetaIeta() );
+    outTree_.photons_pixelSeedVeto -> push_back( photon.hasPixelSeed() );
+    outTree_.photons_electronVeto -> push_back( photon.passElectronVeto() );
+
     
     // add photon variables
   }
