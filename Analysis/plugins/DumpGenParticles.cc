@@ -53,6 +53,37 @@ void DumpGenParticles::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     //   std::cout << &genParticle << std::endl;
     
     // save resonance
+    if  ( abs(genParticle.pdgId()) == 22  &&
+          genParticle.status() == 1  )
+    {
+
+
+      
+      outTree_.genPho_pt     -> push_back( genParticle.pt() );
+      outTree_.genPho_eta    -> push_back( genParticle.eta() );
+      outTree_.genPho_phi    -> push_back( genParticle.phi() );
+      outTree_.genPho_energy -> push_back( genParticle.energy() );
+      outTree_.genPho_charge   -> push_back( genParticle.charge() );
+      outTree_.genPho_HardProcFinState   -> push_back( genParticle.fromHardProcessFinalState() );
+      outTree_.genPho_isPromptFinState  -> push_back( genParticle.isPromptFinalState() );
+     }
+
+}
+
+
+
+  
+
+
+
+  for(size_t i = 0; i < genParticles.size(); ++i)
+  {
+    auto genParticle = genParticles[i];
+    
+    // if( i < 100 )
+    //   std::cout << &genParticle << std::endl;
+    
+    // save resonance
     if ( ( abs(genParticle.pdgId()) == 23 ||
            abs(genParticle.pdgId()) == 24 ||
            abs(genParticle.pdgId()) == 25 ||

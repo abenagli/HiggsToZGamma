@@ -68,6 +68,15 @@
   DATA(std::vector<float>, electrons_trackIso)                        \
   DATA(std::vector<float>, electrons_ecalIso)                         \
   DATA(std::vector<float>, electrons_hcalIso)                         \
+  DATA(std::vector<float>,   electrons_MVAID)                         \
+  DATA(std::vector<float>,   electrons_EnergyPreCorr)                 \
+  DATA(std::vector<float>,   electrons_EnergyErrPreCorr)              \
+  DATA(std::vector<float>,   electrons_EnergyPostCorr)                \
+  DATA(std::vector<float>,   electrons_EnergyErrPostCorr)                \
+  DATA(std::vector<float>,   electrons_R9)                          \
+  DATA(std::vector<float>,   electrons_sieie)                \
+  DATA(std::vector<float>,   electrons_full5x5_R9)                          \
+  DATA(std::vector<float>,   electrons_full5x5_sieie)               \
   DATA(std::vector<float>, photons_pt)                              \
   DATA(std::vector<float>, photons_eta)                             \
   DATA(std::vector<float>, photons_phi)                             \
@@ -76,14 +85,20 @@
   DATA(std::vector<float>, photons_vx)                              \
   DATA(std::vector<float>, photons_vy)                              \
   DATA(std::vector<float>, photons_vz)                              \
-  DATA(std::vector<float>, photons_dxy)                             \
-  DATA(std::vector<float>, photons_dxyErr)                          \
-  DATA(std::vector<float>, photons_dz)                              \
-  DATA(std::vector<float>, photons_dzErr)                           \
   DATA(std::vector<float>, photons_trackIso)                        \
   DATA(std::vector<float>, photons_ecalIso)                         \
   DATA(std::vector<float>, photons_hcalIso)                         \
   DATA(std::vector<float>,   photons_MVAID)                         \
+  DATA(std::vector<float>,   photons_EnergyPreCorr)                 \
+  DATA(std::vector<float>,   photons_EnergyErrPreCorr)              \
+  DATA(std::vector<float>,   photons_EnergyPostCorr)                \
+  DATA(std::vector<float>,   photons_EnergyErrPostCorr)                \
+  DATA(std::vector<float>,   photons_pixelSeedVeto)                \
+  DATA(std::vector<float>,   photons_electronVeto)                \
+  DATA(std::vector<float>,   photons_R9)                          \
+  DATA(std::vector<float>,   photons_sieie)                \
+  DATA(std::vector<float>,   photons_full5x5_R9)                          \
+  DATA(std::vector<float>,   photons_full5x5_sieie)               \
   DATA(std::vector<float>, jets_pt)                               \
   DATA(std::vector<float>, jets_eta)                              \
   DATA(std::vector<float>, jets_phi)                              \

@@ -12,10 +12,11 @@
 #include "FWCore/ServiceRegistry/interface/Service.h"
 
 #include "DataFormats/PatCandidates/interface/Muon.h"
+#include "DataFormats/PatCandidates/interface/Photon.h"
 #include "DataFormats/PatCandidates/interface/Electron.h"
 
 #include "TLorentzVector.h"
-
+#include "DataFormats/Math/interface/deltaR.h"
 
 
 class Preselection : public edm::EDFilter
@@ -36,6 +37,8 @@ private:
   int entry_;
   
   //---inputs
+  edm::EDGetTokenT<pat::PhotonCollection>         photonsToken_;
+  edm::Handle<pat::PhotonCollection>             photonsHandle_;
   edm::EDGetTokenT<pat::MuonCollection>         muonsToken_;
   edm::Handle<pat::MuonCollection>             muonsHandle_;
   edm::EDGetTokenT<pat::ElectronCollection> electronsToken_;
@@ -49,7 +52,9 @@ private:
   int cut_loose_;
   double cut_pt1Min_;
   double cut_pt2Min_;
-  double cut_mInvMin_;
+  double cut_mInvMin_; 
+  double cut_ptPho_;
+  double cut_DR_;
 };
 
 //define this as a plug-in

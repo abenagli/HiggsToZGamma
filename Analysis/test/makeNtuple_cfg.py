@@ -75,11 +75,11 @@ process.load("Configuration.StandardSequences.GeometryDB_cff")
 process.load("Configuration.StandardSequences.MagneticField_cff")
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 from Configuration.AlCa.GlobalTag import GlobalTag
-if options.year is '2016':
+if options.year == '2016':
     process.GlobalTag.globaltag = '94X_dataRun2_v10'
-if options.year is '2017':
+if options.year == '2017':
     process.GlobalTag.globaltag = '94X_dataRun2_v11'
-if options.year is '2018':
+if options.year == '2018':
     process.GlobalTag.globaltag = '102X_dataRun2_Sep2018ABC_v2'
 
 process.maxEvents = cms.untracked.PSet(
@@ -90,8 +90,13 @@ process.source = cms.Source(
     skipEvents = cms.untracked.uint32(0),
     fileNames = cms.untracked.vstring(
         # MC signal 2016
-        'file:/tmp/abenagli/8E7DBB6B-5F3C-E911-89C4-0242AC130002.root'
-        #'/store/mc/RunIISummer16MiniAODv3/GluGluHToZG_M-125_13TeV_powheg_pythia8_CUETP8M1Down/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/120000/8E7DBB6B-5F3C-E911-89C4-0242AC130002.root'
+        #'file:/tmp/abenagli/8E7DBB6B-5F3C-E911-89C4-0242AC130002.root'
+        #'/store/mc/RunIISummer16MiniAODv3/GluGluHToZG_M-125_13TeV_powheg_pythia8_CUETP8M1Up/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/110000/7EBA7D18-483F-E911-8FB6-0CC47A78A2F6.root'
+        # '/store/mc/RunIISummer16MiniAODv3/WplusH_HToZG_WToAll_M125_13TeV_powheg_pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/280000/449943CC-3F24-E911-BD50-E0071B698B11.root'
+        # '/store/mc/RunIISummer16MiniAODv3/WminusH_HToZG_WToAll_M125_13TeV_powheg_pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/30000/74E6E86B-3823-E911-A6E2-002590DE6E86.root'
+        #'/store/mc/RunIISummer16MiniAODv3/ZH_HToZG_ZToAll_M-125_13TeV_powheg_pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/40000/20D364D0-5D20-E911-A893-0CC47A009E22.root'
+        #'/store/mc/RunIISummer16MiniAODv3/ttHToZG_M125_13TeV_powheg_pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/30000/68CDD3E9-0724-E911-B862-20040FE9DE50.root'
+         '/store/mc/RunIISummer16MiniAODv3/VBFHToZG_M-125_13TeV_powheg_pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/250000/4690D374-5E6A-E911-83EA-0CC47A6C1874.root'
         )
     )
 
